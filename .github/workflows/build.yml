@@ -31,6 +31,8 @@ jobs:
       fail-fast: false
     steps:
     - uses: actions/checkout@v6
+    - name: Check clang-format
+      run: scripts/clang-format.sh ci
     - name: cmake
       run: CXX=${{ matrix.cxx }} cmake -G "Unix Makefiles" -DCMAKE_BUILD_TYPE=Release -DFLATBUFFERS_STRICT_MODE=ON -DFLATBUFFERS_STATIC_FLATC=ON .
     - name: build
